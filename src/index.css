@@ -62,7 +62,7 @@
  height: auto;
  display: flex;
 }
-.nav-links a {
+/* .nav-links a {
  margin: 0 1rem;
  padding: 0.5rem 0;
  text-decoration: none;
@@ -73,7 +73,18 @@
   }
 .nav-links a:is(:visited).active{
     color:var(--navActive);
-  }
+  } */
+  .nav-links a {
+  margin: 0 1rem;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  color: var(--navDefault);
+  transition: color 0.2s; /* Add a smooth transition for color change */
+}
+
+.active {
+  color: white; /* Style the active link with white text color */
+}
 
 /* Hero */
 .banner-image{
@@ -125,7 +136,7 @@
  }
 }
 
-@media only screen and (min-width:414px)and (max-width: 767px){
+@media only screen and (min-width:375px)and (max-width: 767px){
  /* Main */
  .background{
   height: auto;
