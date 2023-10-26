@@ -34,25 +34,24 @@ function Drinks() {
     getDrinksMenu();
   }, []);
 
-  const renderDrinksInSection = (category) => {
-    return drinksMenu.map((drinks) => {
-      if (drinks.category === category) {
-        return (
-          <div key={drinks.id} className='item'>
-            <div className='descriptionDiv'>
-              <h3 className='sectionItem'>{drinks.item}</h3>
-              <p className='itemDescription'>{drinks.description}</p>
-            </div>
-            {drinks.price !== undefined && (
-              <span className='price'>&#8358; {drinks.price}</span>
-            )}
-          </div>
-        );
-      } else {
-        return null;
-      }
-    });
-  };
+  const renderDrinksInSection= (category) => {
+  // Filter and sort dessert items for the given category.
+  const sortedDrinksItems = drinksMenu
+    .filter((drink) => drink.category === category)
+    .sort((a, b) => a.price - b.price);
+
+  return sortedDrinksItems.map((drink) => (
+    <div key={drink.id} className='item'>
+      <div className='descriptionDiv'>
+        <h3 className='sectionItem'>{drink.item}</h3>
+        <p className='itemDescription'>{drink.description}</p>
+      </div>
+      {drink.price !== undefined && (
+        <span className='price'>&#8358; {drink.price}</span>
+      )}
+    </div>
+  ));
+};
 
   const ScrollToTopButton = () => {
     return (

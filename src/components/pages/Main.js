@@ -34,23 +34,43 @@ function Main() {
     getMainMenu();
   }, []);
 
-  const renderMainInSection = (category) => {
-    return mainMenu.map((main) => {
-      if (main.category === category) {
-        return (
-          <div key={main.id} className='item'>
-            <div className='descriptionDiv'>
-              <h3 className='sectionItem'>{main.item}</h3>
-              <p className='itemDescription'>{main.description}</p>
-            </div>
-            <span className='price'> &#8358; {main.price}</span>
-          </div>
-        );
-      } else {
-        return null;
-      }
-    });
-  };
+  // const renderMainInSection = (category) => {
+  //   return mainMenu.map((main) => {
+  //     if (main.category === category) {
+  //       return (
+  //         <div key={main.id} className='item'>
+  //           <div className='descriptionDiv'>
+  //             <h3 className='sectionItem'>{main.item}</h3>
+  //             <p className='itemDescription'>{main.description}</p>
+  //           </div>
+  //           <span className='price'> &#8358; {main.price}</span>
+  //         </div>
+  //       );
+  //     } else {
+  //       return null;
+  //     }
+  //   });
+  // };
+
+   const renderMainInSection = (category) => {
+  // Filter and sort dessert items for the given category.
+  const sortedMainItems = mainMenu
+    .filter((main) => main.category === category)
+    .sort((a, b) => a.price - b.price);
+
+  return sortedMainItems.map((main) => (
+    <div key={main.id} className='item'>
+      <div className='descriptionDiv'>
+        <h3 className='sectionItem'>{main.item}</h3>
+        <p className='itemDescription'>{main.description}</p>
+      </div>
+      {main.price !== undefined && (
+        <span className='price'>&#8358; {main.price}</span>
+      )}
+    </div>
+  ));
+};
+
 
   const ScrollToTopButton = () => {
     return (
@@ -72,7 +92,7 @@ function Main() {
           'Rice',
           'Pasta',
           'Swallow',
-          'Frenchfries',
+          'French Fries',
           'Chicken',
           'Beef',
           'Fish',
