@@ -64,39 +64,40 @@ function Navbar() {
     window.open(`tel:${phoneNumber}`, '_blank');
   }
 
-  return (
-    <nav className="navbar">
-      <div className="nav-header">
-        <div className="nav-links">
-          <Link
-            to="/"
-            className={pathname === '/' ? 'active' : ''}
-            style={{ fontSize: '1.5rem', color: pathname === '/' ? 'white' : '' }}
-          >
-            Main
-          </Link>
-          <Link
-            to="/drinks"
-            className={pathname === '/drinks' ? 'active' : ''}
-            style={{ fontSize: '1.5rem', color: pathname === '/drinks' ? 'white' : '' }}
-          >
-            Drinks
-          </Link>
-          <Link
-            to="/dessert"
-            className={pathname === '/dessert' ? 'active' : ''}
-            style={{ fontSize: '1.5rem', color: pathname === '/dessert' ? 'white' : '' }}
-          >
-            Dessert
-          </Link>
-        </div>
-        <div className="nav-icons">
-          <FaInstagram onClick={handleInstagramClick} rel="noopener noreferrer" target="_blank" size={25} />
-          <BsTelephone onClick={handlePhoneNumber} size={25} />
-        </div>
+ return (
+  <nav className="navbar">
+    <div className="nav-header">
+      <div className="nav-links">
+        <Link
+          to="/"
+          className={pathname === '/' ? 'active' : ''}
+          // style={{ fontSize: '1.5rem' }}
+        >
+          Main
+        </Link>
+        <Link
+          to="/drinks"
+          className={pathname === '/drinks' ? 'active' : ''}
+          // style={{ fontSize: '1.5rem' }}
+        >
+          Drinks
+        </Link>
+        <Link
+          to="/dessert"
+          className={pathname === '/dessert' ? 'active' : ''}
+          // style={{ fontSize: '1.5rem' }}
+        >
+          Dessert
+        </Link>
       </div>
-    </nav>
-  );
+      <div className="nav-icons">
+        <FaInstagram onClick={handleInstagramClick} rel="noopener noreferrer" target="_blank" size={20} />
+        <BsTelephone onClick={handlePhoneNumber} size={20} />
+      </div>
+    </div>
+  </nav>
+);
+
 }
 
 export default Navbar;
