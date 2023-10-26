@@ -34,25 +34,26 @@ function Dessert() {
     getDessertMenu();
   }, []);
 
+
   const renderDessertInSection = (category) => {
-    return dessertMenu.map((dessert) => {
-      if (dessert.category === category) {
-        return (
-          <div key={dessert.id} className='item'>
-            <div className='descriptionDiv'>
-              <h3 className='sectionItem'>{dessert.item}</h3>
-              <p className='itemDescription'>{dessert.description}</p>
-            </div>
-            {dessert.price !== undefined && (
-              <span className='price'>&#8358; {dessert.price}</span>
-            )}
-          </div>
-        );
-      } else {
-        return null;
-      }
-    });
-  };
+  // Filter and sort dessert items for the given category.
+  const sortedDessertItems = dessertMenu
+    .filter((dessert) => dessert.category === category)
+    .sort((a, b) => a.price - b.price);
+
+  return sortedDessertItems.map((dessert) => (
+    <div key={dessert.id} className='item'>
+      <div className='descriptionDiv'>
+        <h3 className='sectionItem'>{dessert.item}</h3>
+        <p className='itemDescription'>{dessert.description}</p>
+      </div>
+      {dessert.price !== undefined && (
+        <span className='price'>&#8358; {dessert.price}</span>
+      )}
+    </div>
+  ));
+};
+
 
   const ScrollToTopButton = () => {
     return (
